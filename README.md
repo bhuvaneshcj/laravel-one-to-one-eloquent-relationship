@@ -290,6 +290,26 @@ resources/views/layouts/app.blade.php
 
 <body>
 
+    <nav class="navbar navbar-expand-lg shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="{{url('/')}}">{{env('APP_NAME')}}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('students.index')}}">
+                            Students
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     @yield('content')
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -602,10 +622,10 @@ resources/views/layouts/app.blade.php
 <link rel="stylesheet" href="{{asset('css/main.css')}}">
 ```
 
-### 11. Run your project
+### 11. Run migration
 
 ```
-php artisan serve
+php artisan migrate
 ```
 
 ### 12. To fix bootstrap pagination issue
@@ -620,6 +640,12 @@ public function boot(): void
 {
     \Illuminate\Pagination\Paginator::useBootstrap();
 }
+```
+
+### 13. Run your project
+
+```
+php artisan serve
 ```
 
 ## Screenshot
