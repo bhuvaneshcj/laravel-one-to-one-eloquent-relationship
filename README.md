@@ -519,7 +519,7 @@ resources/views/students/edit.blade.php
             @error('pincode')<small class="text-danger">{{$message}}</small>@enderror
         </div>
         <div class="col-12">
-            <button class="btn btn-primary" type="submit">Create</button>
+            <button class="btn btn-primary" type="submit">Update</button>
         </div>
     </form>
 </div>
