@@ -10,7 +10,13 @@ Hi Viewers, In this example you can see the source code of One to One Eloquent R
 composer create-project laravel/laravel one2one
 ```
 
-### 2. Set your Database name, Username, and Password in the .env file
+### 2. Navigate to project folder
+
+```
+cd one2one
+```
+
+### 3. Set your Database name, Username, and Password in the .env file
 
 This folder will be available in your project root folder
 
@@ -23,13 +29,13 @@ DB_USERNAME= // set username
 DB_PASSWORD= // set password
 ```
 
-### 3. Install Yoeunes toast package
+### 4. Install Yoeunes toast package
 
 ```
 composer require yoeunes/toastr
 ```
 
-### 4. Create a Student Migration and Model
+### 5. Create a Student Migration and Model
 
 ```
 php artisan make:model Student -m
@@ -64,7 +70,7 @@ public function address()
 }
 ```
 
-### 5. Create an Address Migration and Model
+### 6. Create an Address Migration and Model
 
 ```
 php artisan make:model Address -m
@@ -105,7 +111,7 @@ public function student()
 }
 ```
 
-### 6. Create Student Controller
+### 7. Create Student Controller
 
 ```
 php artisan make:controller StudentController --model=Student
@@ -237,7 +243,7 @@ class StudentController extends Controller
 }
 ```
 
-### 7. Add students route
+### 8. Add students route
 
 routes/web.php
 
@@ -265,9 +271,9 @@ Route::get('/', function () {
 Route::resource('students', StudentController::class)->except('show');
 ```
 
-### 8. Create Resources
+### 9. Create Resources
 
-resources/layouts/app.blade.php
+resources/views/layouts/app.blade.php
 
 ```
 <!DOCTYPE html>
@@ -294,7 +300,7 @@ resources/layouts/app.blade.php
 </html>
 ```
 
-resources/students/index.blade.php
+resources/views/students/index.blade.php
 
 ```
 @extends('layouts.app')
@@ -361,7 +367,7 @@ resources/students/index.blade.php
 @endsection
 ```
 
-resources/students/create.blade.php
+resources/views/students/create.blade.php
 
 ```
 @extends('layouts.app')
@@ -373,52 +379,52 @@ resources/students/create.blade.php
         @csrf
         <div class="col-md-4">
             <label class="form-label" for="nameInp">Name</label>
-            <input class="form-control" id="nameInp" type="text" name="name">
+            <input class="form-control" id="nameInp" type="text" name="name" value="{{old('name')}}">
             @error('name')<small class="text-danger">{{$message}}</small>@enderror
         </div>
         <div class="col-md-4">
             <label class="form-label" for="dobInp">D.O.B</label>
-            <input class="form-control" id="dobInp" type="date" name="dob">
+            <input class="form-control" id="dobInp" type="date" name="dob" value="{{old('dob')}}">
             @error('dob')<small class="text-danger">{{$message}}</small>@enderror
         </div>
         <div class="col-md-4">
             <label class="form-label" for="emailInp">Email Address</label>
-            <input class="form-control" id="emailInp" type="email" name="email">
+            <input class="form-control" id="emailInp" type="email" name="email" value="{{old('email')}}">
             @error('email')<small class="text-danger">{{$message}}</small>@enderror
         </div>
         <div class="col-md-4">
             <label class="form-label" for="phoneInp">Phone</label>
-            <input class="form-control" id="phoneInp" type="text" name="phone">
+            <input class="form-control" id="phoneInp" type="text" name="phone" value="{{old('phone')}}">
             @error('phone')<small class="text-danger">{{$message}}</small>@enderror
         </div>
         <div class="col-md-4">
             <label class="form-label" for="line1Inp">Address Line 1</label>
-            <input class="form-control" id="line1Inp" type="text" name="line_1">
+            <input class="form-control" id="line1Inp" type="text" name="line_1" value="{{old('line_1')}}">
             @error('line_1')<small class="text-danger">{{$message}}</small>@enderror
         </div>
         <div class="col-md-4">
             <label class="form-label" for="line2Inp">Address Line 2</label>
-            <input class="form-control" id="line2Inp" type="text" name="line_2">
+            <input class="form-control" id="line2Inp" type="text" name="line_2" value="{{old('line_2')}}">
             @error('line_2')<small class="text-danger">{{$message}}</small>@enderror
         </div>
         <div class="col-md-4">
             <label class="form-label" for="cityInp">City</label>
-            <input class="form-control" id="cityInp" type="text" name="city">
+            <input class="form-control" id="cityInp" type="text" name="city" value="{{old('city')}}">
             @error('city')<small class="text-danger">{{$message}}</small>@enderror
         </div>
         <div class="col-md-4">
             <label class="form-label" for="stateInp">State</label>
-            <input class="form-control" id="stateInp" type="text" name="state">
+            <input class="form-control" id="stateInp" type="text" name="state" value="{{old('state')}}">
             @error('state')<small class="text-danger">{{$message}}</small>@enderror
         </div>
         <div class="col-md-4">
             <label class="form-label" for="countryInp">Country</label>
-            <input class="form-control" id="countryInp" type="text" name="country">
+            <input class="form-control" id="countryInp" type="text" name="country" value="{{old('country')}}">
             @error('country')<small class="text-danger">{{$message}}</small>@enderror
         </div>
         <div class="col-md-4">
             <label class="form-label" for="pincodeInp">Pincode</label>
-            <input class="form-control" id="pincodeInp" type="text" name="pincode">
+            <input class="form-control" id="pincodeInp" type="text" name="pincode" value="{{old('pincode')}}">
             @error('pincode')<small class="text-danger">{{$message}}</small>@enderror
         </div>
         <div class="col-12">
@@ -430,7 +436,7 @@ resources/students/create.blade.php
 @endsection
 ```
 
-resources/students/edit.blade.php
+resources/views/students/edit.blade.php
 
 ```
 @extends('layouts.app')
@@ -501,7 +507,7 @@ resources/students/edit.blade.php
 @endsection
 ```
 
-### 9. Adding Custom CSS (Optional)
+### 10. Adding Custom CSS (Optional)
 
 public/css/main.css
 
@@ -588,7 +594,7 @@ hr {
 }
 ```
 
-resources/layouts/app.blade.php
+resources/views/layouts/app.blade.php
 
 > Add the below line inside your head tag
 
@@ -596,13 +602,13 @@ resources/layouts/app.blade.php
 <link rel="stylesheet" href="{{asset('css/main.css')}}">
 ```
 
-### 10. Run your project
+### 11. Run your project
 
 ```
 php artisan serve
 ```
 
-### 11. To fix bootstrap pagination issue
+### 12. To fix bootstrap pagination issue
 
 app/Providers/AppServiceProvider.php
 
